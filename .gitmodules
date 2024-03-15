@@ -1,0 +1,3 @@
+[submodule "apps/ChatService"]
+	path = apps/ChatService
+	url = https://github.com/AdnanGhannam2001/ChatService
