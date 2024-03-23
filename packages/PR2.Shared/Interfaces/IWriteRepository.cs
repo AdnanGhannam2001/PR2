@@ -1,9 +1,9 @@
 namespace PR2.Shared.Interfaces;
 
-public interface IWriteRepository<T>
+public interface IWriteRepository<T, TTransaction>
     where T : class
 {
-    Task<TTransaction> BeginTransactionAsync<TTransaction>(CancellationToken cancellationToken = default);
+    Task<TTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
     
     Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
 
