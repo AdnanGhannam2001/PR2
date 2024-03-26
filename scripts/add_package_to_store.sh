@@ -5,4 +5,11 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-mono /usr/local/bin/nuget.exe add "./packages/$1/bin/Debug/$1.$2.nupkg" -source ./store
+PACKAGE=$1
+VERSION=$2
+
+FULL_PATH="store/${PACKAGE,,}/$VERSION/"
+
+mkdir -p $FULL_PATH
+
+cp "packages/$PACKAGE/bin/Debug/$PACKAGE.$VERSION.nupkg" "$FULL_PATH$PACKAGE.$VERSION.nupkg"
