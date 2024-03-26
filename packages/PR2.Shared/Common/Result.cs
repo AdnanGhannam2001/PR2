@@ -36,6 +36,18 @@ public class Result<V, E> : IEquatable<Result<V, E>>
     public Result(V value) => Value = value;
     public Result(params E[] exceptions) => Exceptions = exceptions;
 
+    public static implicit operator Result<V, E>(V value) {
+        return new Result<V, E>(value);
+    }
+
+    public static implicit operator Result<V, E>(E[] exceptions) {
+        return new Result<V, E>(exceptions);
+    }
+
+    public static implicit operator Result<V, E>(E exception) {
+        return new Result<V, E>([exception]);
+    }
+
     public override bool Equals(object? obj) {
         if (obj is Result<V, E> result) {
             bool valueEquality = (_value is null && result._value is null)
