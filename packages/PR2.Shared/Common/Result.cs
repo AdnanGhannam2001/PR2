@@ -89,3 +89,7 @@ public class Result<V, E> : IEquatable<Result<V, E>>
         return builder.ToString();
     }
 }
+
+public class Result<V>
+    : Result<V, ExceptionBase>
+        where V : notnull { }
