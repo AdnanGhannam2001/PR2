@@ -4,6 +4,6 @@ using static PR2.Shared.Constants.ExceptionCodes;
 namespace PR2.Shared.Exceptions;
 
 public class DuplicatedRecordException : ExceptionBase {
-    public DuplicatedRecordException(string propertyName, string errorMessage)
-        : base(propertyName, errorMessage, DuplicatedRecord) { }
+    public DuplicatedRecordException(string errorMessage)
+        : base("Database", errorMessage, DuplicatedRecord) { }
 }
