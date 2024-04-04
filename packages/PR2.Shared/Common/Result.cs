@@ -72,10 +72,10 @@ public class Result<V, E> : IEquatable<Result<V, E>>
 
     public bool IsSuccess => _value is not null && _exceptions is null;
 
-    public override string ToString()
+    public override string? ToString()
     {
         if (IsSuccess) {
-            return Value.ToString();
+            return Value!.ToString();
         } 
 
         var builder = new StringBuilder();
@@ -92,4 +92,20 @@ public class Result<V, E> : IEquatable<Result<V, E>>
 
 public class Result<V>
     : Result<V, ExceptionBase>
-        where V : notnull { }
+        where V : notnull
+{
+    public Result(V value) : base(value) { }
+    public Result(params ExceptionBase[] exceptions) : base(exceptions) { }
+
+    public static implicit operator Result<V>(V value) {
+        return new Result<V>(value);
+    }
+
+    public static implicit operator Result<V>(ExceptionBase[] exceptions) {
+        return new Result<V>(exceptions);
+    }
+
+    public static implicit operator Result<V>(ExceptionBase exception) {
+        return new Result<V>([exception]);
+    }
+}
