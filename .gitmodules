@@ -1,3 +1,6 @@
 [submodule "apps/ChatService"]
 	path = apps/ChatService
 	url = https://github.com/AdnanGhannam2001/ChatService
+[submodule "apps/SocialMediaService"]
+	path = apps/SocialMediaService
+	url = https://github.com/AdnanGhannam2001/SocialMediaService
