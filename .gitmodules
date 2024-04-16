@@ -4,3 +4,6 @@
 [submodule "apps/SocialMediaService"]
 	path = apps/SocialMediaService
 	url = https://github.com/AdnanGhannam2001/SocialMediaService
+[submodule "apps/AuthorizationService"]
+	path = apps/AuthorizationService
+	url = https://github.com/AdnanGhannam2001/AuthorizationService.git
