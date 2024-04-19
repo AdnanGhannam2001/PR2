@@ -1,0 +1,30 @@
+syntax = "proto3";
+option csharp_namespace = "SocialMediaService.WebApi.Protos";
+package pr2.profile;
+
+import "google/protobuf/timestamp.proto";
+
+service ProfileService {
+    rpc CreateProfile (CreateProfileRequest) returns (Empty);
+    rpc DeleteProfile (DeleteProfileRequest) returns (Empty);
+}
+
+message Empty { }
+
+enum Genders {
+    MALE = 0;
+    FEMALE = 1;
+}
+
+message CreateProfileRequest {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    google.protobuf.Timestamp date_of_birth = 4;
+    Genders gender = 5;
+    string phone_number = 6;
+}
+
+message DeleteProfileRequest {
+    string id = 1;
+}
