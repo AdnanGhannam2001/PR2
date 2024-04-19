@@ -68,7 +68,12 @@ public class Result<V, E> : IEquatable<Result<V, E>>
     public static bool operator ==(Result<V, E> a, Result<V, E> b) => a.Equals(b);
     public static bool operator !=(Result<V, E> a, Result<V, E> b) => !a.Equals(b);
 
-    public override int GetHashCode() => GetHashCode();
+    public static bool operator ==(Result<V, E> a, bool b) => a.IsSuccess == b;
+    public static bool operator !=(Result<V, E> a, bool b) => a.IsSuccess != b;
+
+    public static explicit operator bool(Result<V, E> a) => a.IsSuccess;
+
+    public override int GetHashCode() => base.GetHashCode() ^ 11;
 
     public bool IsSuccess => _value is not null && _exceptions is null;
 
