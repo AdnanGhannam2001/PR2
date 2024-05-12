@@ -22,7 +22,7 @@ message CreateProfileRequest {
     string last_name = 3;
     google.protobuf.Timestamp date_of_birth = 4;
     Genders gender = 5;
-    string phone_number = 6;
+    optional string phone_number = 6;
 }
 
 message DeleteProfileRequest {
