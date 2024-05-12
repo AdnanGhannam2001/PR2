@@ -4,27 +4,23 @@ namespace PR2.Shared.Common;
 
 public class ExceptionBase : Exception
 {
-    public ExceptionBase(string propertyName, string errorMessage, string? errorCode = null) : base() {
+    public ExceptionBase(string propertyName, string errorMessage, string? errorCode = null) : base(errorMessage) {
         PropertyName = propertyName;
-        ErrorMessage = errorMessage;
         ErrorCode = errorCode;
     }
 
     public string PropertyName { get; init; }
-
-    public string ErrorMessage { get; init; }
-
     public string? ErrorCode { get; init; }
 
     public override string ToString() {
         var builder = new StringBuilder();
 
         if (ErrorCode is not null) {
-            builder.AppendLine($"Error Code: {ErrorCode}");
+            builder.Append($"Error Code: {ErrorCode}, ");
         }
 
-        builder.AppendLine($"Property: {PropertyName}");
-        builder.AppendLine($"Error Message: {ErrorMessage}");
+        builder.Append($"Property: {PropertyName}, ");
+        builder.Append($"Error Message: {Message}");
 
         return builder.ToString();
     }
