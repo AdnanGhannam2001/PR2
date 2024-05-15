@@ -2,12 +2,12 @@
 
 # TODO: Make sure that release packages are overriding debug packages
 
-mkdir store
+mkdir Store
 
-PACKAGES_PATHS=$(find ./packages -name "*.nupkg")
+PACKAGES_PATHS=$(find ./Packages -name "*.nupkg")
 
 for PACKAGE_PATH in $PACKAGES_PATHS
 do
     PACKAGE_NAME=$(basename -- $PACKAGE_PATH)
-    cp -v $PACKAGE_PATH "./store/$PACKAGE_NAME"
+    cp -v $PACKAGE_PATH "./Store/$PACKAGE_NAME"
 done
