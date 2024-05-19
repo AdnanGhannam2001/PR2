@@ -7,4 +7,5 @@ internal static class ExceptionCodes {
     public const string TransactionFailure  = nameof(TransactionFailure);
     public const string OperationCancelled  = nameof(OperationCancelled);
     public const string ConnectionFailure   = nameof(ConnectionFailure);
+    public const string Unauthorized   = nameof(Unauthorized);
 }
