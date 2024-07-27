@@ -6,7 +6,7 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "password"
+      POSTGRES_PASSWORD: "password123"
       PGDATA: /data/postgres
     volumes:
        - postgres:/data/postgres
@@ -25,6 +25,9 @@ services:
       - 7003:7003
     volumes:
       - .:/pr2
+    # environment:
+    #   - ConnectionStrings__UsersConnection: "Host=db;Port=5432;Database=PR2AuthServiceUsersDB;Username=postgres;Password=password"
+    #   - ConnectionStrings__ConfigsConnection: "Host=db;Port=5432;Database=PR2AuthServiceConfigsDB;Username=postgres;Password=password"
     depends_on:
       - db
   # web:

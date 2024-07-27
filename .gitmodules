@@ -7,3 +7,6 @@
 [submodule "apps/AuthorizationService"]
 	path = Applications/AuthorizationService
 	url = https://github.com/AdnanGhannam2001/AuthorizationService.git
+[submodule "Applications/NotificationService"]
+	path = Applications/NotificationService
+	url = https://github.com/AdnanGhannam2001/NotificationService
