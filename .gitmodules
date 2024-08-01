@@ -10,3 +10,6 @@
 [submodule "Applications/NotificationService"]
 	path = Applications/NotificationService
 	url = https://github.com/AdnanGhannam2001/NotificationService
+[submodule "Applications/WebClient"]
+	path = Applications/WebClient
+	url = https://github.com/AdnanGhannam2001/SM-Web-Client
