@@ -10,7 +10,7 @@ PACKAGES_NUPKG =$(shell find ./Packages -name "*.nupkg")
 
 DOCKER ?=0
 
-ifneq (DOCKER, 0)
+ifneq ($(DOCKER), 0)
 	PROJECTS_FLAGS +=-p:DefineConstants=DOCKER
 endif
 
@@ -36,13 +36,19 @@ restore:
 	done
 
 init-dbs:
-	@for PROJECT in $(PROJECTS_CSPROJ); do \
-		dotnet run --project $$PROJECT $(PROJECTS_FLAGS) -- --create-tables --seed; \
-	done
+	dotnet restore Applications/SocialMediaService/SocialMediaService.sln
+	dotnet run --project Applications/SocialMediaService/src/SocialMediaService.WebApi $(PROJECTS_FLAGS) &
+	sleep 15
+	dotnet run --project Applications/AuthorizationService/src/AuthorizationServer $(PROJECTS_FLAGS) -- --seed
+	killall dotnet
+
+	dotnet run --project Applications/SocialMediaService/src/SocialMediaService.WebApi $(PROJECTS_FLAGS) --seed
+	dotnet run --project Applications/ChatService/src $(PROJECTS_FLAGS) -- --create-tables --seed
+	dotnet run --project Applications/NotificationService/src $(PROJECTS_FLAGS) -- --create-tables
 
 run:
 	@for PROJECT in $(PROJECTS_CSPROJ); do \
-		dotnet run --project $$PROJECT $(PROJECTS_FLAGS); \
+		dotnet run --project $$PROJECT $(PROJECTS_FLAGS) &; \
 	done
 
 .PHONY: all
