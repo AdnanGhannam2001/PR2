@@ -48,7 +48,9 @@ init-dbs:
 
 run:
 	@for PROJECT in $(PROJECTS_CSPROJ); do \
-		dotnet run --project $$PROJECT $(PROJECTS_FLAGS) &; \
-	done
+		dotnet run --project $$PROJECT $(PROJECTS_FLAGS) & \
+	done; \
+	wait; \
+	exec sh
 
 .PHONY: all
