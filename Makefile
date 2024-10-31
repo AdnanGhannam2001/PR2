@@ -35,6 +35,11 @@ restore:
 		dotnet restore $$SLN; \
 	done
 
+clear-dbs:
+	@for PROJECT in $(PROJECTS_CSPROJ); do \
+		dotnet run --project $$PROJECT $(PROJECTS_FLAGS) -- --clear; \
+	done
+
 init-dbs:
 	dotnet restore Applications/SocialMediaService/SocialMediaService.sln
 	dotnet run --project Applications/SocialMediaService/src/SocialMediaService.WebApi $(PROJECTS_FLAGS) &

@@ -19,4 +19,4 @@ RUN make DOCKER=1 copy-packages
 
 COPY . .
 
-CMD ["make", "DOCKER=1", "init-dbs", "run"]
+CMD ["make", "DOCKER=1", "clear-dbs", "init-dbs", "run"]
