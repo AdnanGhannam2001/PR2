@@ -34,6 +34,7 @@ services:
       - 5004:5004
       - 7001:7001
       - 7002:7002
+      - 7003:7003
       - 7004:7004
     volumes:
       - ~/.nuget/packages:/root/.nuget/packages
